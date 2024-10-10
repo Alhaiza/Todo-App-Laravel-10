@@ -24,3 +24,5 @@ Route::get('/register', [AuthController::class, 'register'])->middleware('guest'
 Route::post('/register', [AuthController::class, 'storeAccount'])->middleware('guest')->name('storeAccount');
 Route::get('/create', [TodoController::class, 'create'])->middleware('auth')->name('create');
 Route::post('/store', [TodoController::class, 'store'])->middleware('auth')->name('store');
+Route::get('edit/{id}', [TodoController::class, 'edit'])->middleware('auth')->name('edit');
+Route::put('edit/{todo}', [TodoController::class, 'update'])->middleware('auth')->name('update');
