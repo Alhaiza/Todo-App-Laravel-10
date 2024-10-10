@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TodoController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +18,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [TodoController::class, 'index'])->name('home');
 Route::get('/login', [AuthController::class, 'login'])->middleware('guest')->name('login');
+Route::post('/login', [AuthController::class, 'authenticate'])->name('authenticate');
+Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
 Route::get('/register', [AuthController::class, 'register'])->middleware('guest')->name('register');
 Route::post('/register', [AuthController::class, 'storeAccount'])->middleware('guest')->name('storeAccount');
 Route::get('/create', [TodoController::class, 'create'])->name('create');
