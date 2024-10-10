@@ -2,31 +2,46 @@
 
 @section('container')
     @auth
-
         <div class="container mt-3">
             <h1 class="text-center">My Todo List</h1>
             <a href="{{ route('create') }}" class="btn btn-primary">Add Todo</a>
-            <table class="table">
-                <thead class="text-center">
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Task</th>
-                        <th scope="col">Due Date</th>
-                        <th scope="col">Action</th>
-                    </tr>
-                </thead>
-                <tbody class="text-center">
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Do Nothing</td>
-                        <td>06/11/2023</td>
-                        <td>
-                            <a href="" class="btn btn-warning">Edit</a>
-                            <a href="" class="btn btn-danger">Delete</a>
-                        </td>
+            @if (session()->has('success'))
+                <div class="alert alert-success alert-dismissible fade show my-2" role="alert">
+                    {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+            @if ($todos->isEmpty())
+                <div class="alert alert-danger mt-3" role="alert">
+                    There's No Todos Been Added!
+                </div>
+            @else
+                <table class="table">
+                    <thead class="text-center">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Task</th>
+                            <th scope="col">Due Date</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-center">
 
-                    </tr>
-                </tbody>
+                        @foreach ($todos as $todo)
+                            <tr>
+                                <th scope="row">{{ $loop->iteration }}</th>
+                                <td>{{ $todo->todo }}</td>
+                                <td>{{ $todo->due_date }}</td>
+                                <td>
+                                    <a href="" class="btn btn-warning">Edit</a>
+                                    <a href="" class="btn btn-danger">Delete</a>
+                                </td>
+
+                            </tr>
+                        @endforeach
+            @endif
+
+            </tbody>
             </table>
         </div>
     @else

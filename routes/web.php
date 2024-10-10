@@ -22,4 +22,5 @@ Route::post('/login', [AuthController::class, 'authenticate'])->name('authentica
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
 Route::get('/register', [AuthController::class, 'register'])->middleware('guest')->name('register');
 Route::post('/register', [AuthController::class, 'storeAccount'])->middleware('guest')->name('storeAccount');
-Route::get('/create', [TodoController::class, 'create'])->name('create');
+Route::get('/create', [TodoController::class, 'create'])->middleware('auth')->name('create');
+Route::post('/store', [TodoController::class, 'store'])->middleware('auth')->name('store');
