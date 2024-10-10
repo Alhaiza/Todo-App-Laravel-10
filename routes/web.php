@@ -26,3 +26,4 @@ Route::get('/create', [TodoController::class, 'create'])->middleware('auth')->na
 Route::post('/store', [TodoController::class, 'store'])->middleware('auth')->name('store');
 Route::get('edit/{id}', [TodoController::class, 'edit'])->middleware('auth')->name('edit');
 Route::put('edit/{todo}', [TodoController::class, 'update'])->middleware('auth')->name('update');
+Route::delete('delete/{id}', [TodoController::class, 'delete'])->middleware('auth')->name('delete');

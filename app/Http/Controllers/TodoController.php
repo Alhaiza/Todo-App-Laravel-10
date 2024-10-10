@@ -50,28 +50,26 @@ class TodoController extends Controller
 
     public function update(Request $request, Todo $todo)
     {
-        // Validation rules
         $rules = [
             'todo' => 'required|min:5|max:255',
             'due_date' => 'required|date',
         ];
 
-        // Validate the request data
         $validatedData = $request->validate($rules);
-
-        // Add the user_id explicitly
         $validatedData['user_id'] = auth()->user()->id;
-
-        // dd($validatedData);
-
 
         Todo::where('id', $todo->id)
             ->update($validatedData);
 
-
-
-
-        // Redirect back to home with success message
         return redirect(route('home'))->with('success', 'Your Todo Has Been Edited');
+    }
+
+    public function delete($id)
+    {
+        $todo = Todo::findOrFail($id);
+
+        $todo->delete();
+
+        return redirect(route('home'))->with('success', 'Todo Has Been Deleted');
     }
 }

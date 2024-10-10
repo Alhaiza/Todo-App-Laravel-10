@@ -34,6 +34,12 @@
                                 <td>{{ $todo->due_date }}</td>
                                 <td>
                                     <a href="/edit/{{ $todo->id }}" class="btn btn-warning">Edit</a>
+                                    <form action="{{ route('delete', $todo->id) }}" method="POST" class="d-inline">
+                                        @method('delete')
+                                        @csrf
+                                        <button type="submit" class="btn btn-danger"
+                                            onclick="return confirm('Are You Sure?')">Delete</button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach

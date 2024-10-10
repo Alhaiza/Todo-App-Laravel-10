@@ -14,11 +14,6 @@
                             <p class="fs-6 d-inline">Welcome Back, <strong>{{ auth()->user()->name }}</strong></p>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/dashboard"><i class="bi bi-speedometer mx-1"></i>My
-                                    Dashboard</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
                             <form action="{{ route('logout') }}" method="POST">
                                 @csrf
                                 <button type="submit" class="dropdown-item"><i
