@@ -31,7 +31,8 @@
                             <tr>
                                 <th scope="row">{{ $loop->iteration }}</th>
                                 <td>{{ $todo->todo }}</td>
-                                <td>{{ $todo->due_date }}</td>
+                                <td>{{ \Carbon\Carbon::parse($todo->due_date)->format('l, F jS, Y') }}</td>
+
                                 <td>
                                     <a href="/edit/{{ $todo->id }}" class="btn btn-warning">Edit</a>
                                     <form action="{{ route('delete', $todo->id) }}" method="POST" class="d-inline">
@@ -47,6 +48,7 @@
 
             </tbody>
             </table>
+            {{ $todos->links() }}
         </div>
     @else
         <div class="container d-flex flex-column align-items-center justify-content-center min-vh-100">

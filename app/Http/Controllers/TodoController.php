@@ -15,7 +15,9 @@ class TodoController extends Controller
             // If authenticated, return view with user's todos
             return view('pages.home', [
                 'title' => 'Todo App : ' . auth()->user()->name,
-                'todos' => Todo::where('user_id', auth()->user()->id)->get()
+                'todos' => Todo::where('user_id', auth()->user()->id)
+                    ->orderBy('created_at', 'desc')
+                    ->paginate(5)
             ]);
         }
 
