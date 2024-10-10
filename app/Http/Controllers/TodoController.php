@@ -15,4 +15,9 @@ class TodoController extends Controller
     {
         return view('pages.create');
     }
+
+    public function edit()
+    {
+        return view('pages.edit');
+    }
 }

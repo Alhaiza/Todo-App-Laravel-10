@@ -13,7 +13,9 @@
                     <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
                     <label for="floatingPassword">Password</label>
                 </div>
-                <button class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
+                <button class="btn btn-primary w-100 py-2" type="submit">Login</button>
+                <p class="mt-3 text-center">Not Have an Account? <a href="{{ route('register') }}"
+                        class="text-decoration-none">Register</a></p>
             </div>
         </form>
     </main>

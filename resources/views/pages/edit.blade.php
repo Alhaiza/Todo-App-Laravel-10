@@ -12,7 +12,7 @@
                 <label for="due_date" class="form-label">Due Date</label>
                 <input type="date" class="form-control" id="due_date" name="due_date">
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Edit</button>
             <a href="{{ route('home') }}" class="btn btn-danger">Back</a>
         </form>
     </div>
