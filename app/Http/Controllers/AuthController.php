@@ -11,7 +11,10 @@ class AuthController extends Controller
 {
     public function login()
     {
-        return view('pages.login');
+        return view(
+            'pages.login',
+            ['title' => 'Login']
+        );
     }
 
     public function authenticate(Request $request)
@@ -33,7 +36,10 @@ class AuthController extends Controller
 
     public function register()
     {
-        return view('pages.register');
+        return view(
+            'pages.register',
+            ['title' => 'Register']
+        );
     }
 
     public function storeAccount(Request $request)

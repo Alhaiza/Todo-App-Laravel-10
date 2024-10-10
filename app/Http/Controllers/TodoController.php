@@ -14,19 +14,23 @@ class TodoController extends Controller
         if (auth()->check()) {
             // If authenticated, return view with user's todos
             return view('pages.home', [
+                'title' => 'Todo App : ' . auth()->user()->name,
                 'todos' => Todo::where('user_id', auth()->user()->id)->get()
             ]);
         }
 
 
         return view('pages.home', [
+            'title' => 'Todo App',
             'todos' => collect() // An empty collection
         ]);
     }
 
     public function create()
     {
-        return view('pages.create');
+        return view('pages.create', [
+            'title' => 'Create Todo',
+        ]);
     }
 
     public function store(Request $request)
@@ -44,6 +48,7 @@ class TodoController extends Controller
     public function edit(Todo $id)
     {
         return view('pages.edit', [
+            'title' => 'Todo Edit',
             'todo' => $id,
         ]);
     }
