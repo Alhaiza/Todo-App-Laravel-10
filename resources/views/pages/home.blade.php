@@ -9,6 +9,7 @@
 
     <div class="container mt-3">
         <h1 class="text-center">My Todo List</h1>
+        <a href="{{ route('create') }}" class="btn btn-primary">Add Todo</a>
         <table class="table">
             <thead class="text-center">
                 <tr>

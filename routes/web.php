@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\TodoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,8 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('pages.home');
-});
-
+Route::get('/', [TodoController::class, 'index'])->name('home');
 Route::get('/login', [AuthController::class, 'index'])->middleware('guest')->name('login');
+Route::get('/create', [TodoController::class, 'create'])->name('create');
