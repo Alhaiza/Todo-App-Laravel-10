@@ -18,4 +18,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [TodoController::class, 'index'])->name('home');
 Route::get('/login', [AuthController::class, 'login'])->middleware('guest')->name('login');
 Route::get('/register', [AuthController::class, 'register'])->middleware('guest')->name('register');
+Route::post('/register', [AuthController::class, 'storeAccount'])->middleware('guest')->name('storeAccount');
 Route::get('/create', [TodoController::class, 'create'])->name('create');
